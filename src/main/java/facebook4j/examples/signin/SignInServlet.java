@@ -15,6 +15,8 @@ public class SignInServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Facebook facebook = new FacebookFactory().getInstance();
+        
+        facebook.setOAuthAppId("774647775993826", "6ad4a6ef42be00cba92841b4edab3922");
         request.getSession().setAttribute("facebook", facebook);
         StringBuffer callbackURL = request.getRequestURL();
         int index = callbackURL.lastIndexOf("/");
@@ -22,3 +24,7 @@ public class SignInServlet extends HttpServlet {
         response.sendRedirect(facebook.getOAuthAuthorizationURL(callbackURL.toString()));
     }
 }
+
+
+
+
